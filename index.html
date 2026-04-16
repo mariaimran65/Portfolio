@@ -1,587 +1,886 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Portfolio &mdash; Maria Imran </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARIA NAVEED | Full-Stack Engineer & AI Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --primary: #00ffaa; --bg: #020202; }
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+        }
+        .font-heavy { font-family: 'Unbounded', cursive; }
+        
+        /* Mesmerizing Animated Background */
+        .aura {
+            position: fixed;
+            width: 80vw; height: 80vw;
+            background: radial-gradient(circle, rgba(0, 255, 170, 0.08) 0%, transparent 70%);
+            top: -40vw; right: -20vw;
+            z-index: -1;
+            animation: drift 20s infinite alternate;
+        }
+        @keyframes drift {
+            from { transform: translate(0,0); }
+            to { transform: translate(-10%, 10%); }
+        }
 
-	<!-- 
-	//////////////////////////////////////////////////////
+        /* Name Glow Effect */
+        .name-glow {
+            position: relative;
+            display: inline-block;
+        }
+        .name-glow::before {
+            content: 'MARIA NAVEED';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            color: #00ffaa;
+            filter: blur(20px);
+            opacity: 0.6;
+            animation: glow-pulse 2s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        @keyframes glow-pulse {
+            from { opacity: 0.2; filter: blur(15px); }
+            to { opacity: 0.4; filter: blur(25px); }
+        }
 
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FreeHTML5.co
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
+        .name-glow-outline {
+            -webkit-text-stroke: 2px rgba(0, 255, 170, 0.3);
+            paint-order: stroke fill;
+        }
 
-	//////////////////////////////////////////////////////
-	 -->
+        .bento-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .bento-card:hover {
+            border-color: #00ffaa;
+            background: rgba(255, 255, 255, 0.04);
+            transform: scale(1.01);
+        }
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.4);
+            transform: translateY(-2px);
+        }
 
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+        .filter-chip {
+            padding: 8px 24px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .filter-chip.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
 
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+        .project-hide { display: none; opacity: 0; transform: translateY(20px); }
+        .project-show { display: block; opacity: 1; transform: translateY(0); }
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+        /* Skill Card Styles */
+        .skill-category {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,255,170,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s ease;
+        }
+        .skill-category:hover {
+            border-color: rgba(0,255,170,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,255,170,0.1);
+        }
+        .skill-tag {
+            background: rgba(0,255,170,0.1);
+            border: 1px solid rgba(0,255,170,0.2);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #00ffaa;
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            background: rgba(0,255,170,0.2);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="selection:bg-emerald-500 selection:text-black">
+    <div class="aura"></div>
 
-	</head>
-	<body>
-		
-	<div class="fh5co-loader"></div>
-	
-	<div id="page">	
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							
-							<h1><span>Maria Imran</span></h1>
-							<h3><span>FullStack Developer</span></h3>
-							<p>
-								<ul class="fh5co-social-icons">
-									
-									
-									<li><a  target="_blank" href="https://www.linkedin.com/in/maria-imran-15322826b/"><i class="icon-linkedin2"></i></a></li>
-									<li><a target="_blank" href="images/CV.pdf"><h1>CV</h1></a></li>
-								</ul>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+    <header class="fixed top-8 left-0 w-full z-50 px-6">
+        <div class="max-w-6xl mx-auto bento-card rounded-full px-8 py-4 flex justify-between items-center">
+            <span class="font-heavy text-lg tracking-tighter">MN<span class="text-[#00ffaa]">_</span></span>
+            <div class="hidden md:flex gap-10 text-[10px] font-black uppercase tracking-widest opacity-60">
+                <a href="#projects" class="hover:text-[#00ffaa] transition">Works</a>
+                <a href="#skills" class="hover:text-[#00ffaa] transition">Stack</a>
+                <a href="mailto:mariaimran787898@gmail.com" class="hover:text-[#00ffaa] transition">mariaimran787898@gmail.com</a>
+            </div>
+            <a href="mailto:mariaimran787898@gmail.com" class="bg-white text-black px-6 py-2 rounded-full text-[10px] font-black uppercase">Contact Me</a>
+        </div>
+    </header>
 
-	<div id="fh5co-about" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 about col-md-offset-2 text-center fh5co-heading">
-					<h2>About Me</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-5">
-					<ul class="info">
-						<li><span class="first-block">Full Name:</span><span class="second-block">Maria</span></li>
-						<li><span class="first-block">Phone:</span><span class="second-block">+ 92 3207478953</span></li>
-						<li><span class="first-block">Email:</span><span class="second-block">mariaimran787898@gmail.com</span></li>
-						
-						<li><span class="first-block">Address:</span><span class="second-block">Nisar Colony, Samanabad, Faisalabad</span></li>
-					</ul>
-				</div>
-				<div class="col-md-7">
-					<h2>Hello There!</h2>
-					<p> I'm Maria, a dedicated MERN stack developer on a mission to build captivating digital experiences. My journey into the world of web development began with a fascination for its creative potential and the endless possibilities it offers. Since then, I've immersed myself in mastering the MERN stack – MongoDB, Express.js, React.js, and Node.js – to create dynamic and robust web applications.</p>
-					<p>With a solid foundation in front-end technologies like HTML, CSS, and JavaScript, I've delved deep into React.js to craft responsive and user-friendly interfaces that bring ideas to life. On the back end, I specialize in architecting RESTful APIs with Express and Node.js, ensuring seamless communication between the client and server.
-						Outside of coding, you can find me exploring the latest tech trends, contributing to open-source projects, or simply enjoying a good cup of coffee while brainstorming my next big idea. Let's connect and create something amazing together!</p>
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a target="_blank" href="https://www.linkedin.com/in/maria-imran-15322826b/"><i class="icon-linkedin2"></i></a></li>
-							<li><a target="_blank" href="images/CV.pdf">CV</a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-20">
+        <div class="mb-6 px-4 py-1 border border-emerald-500/30 rounded-full text-[10px] font-bold text-emerald-400 tracking-[0.3em] uppercase">
+            Available for worldwide collab
+        </div>
+        
+        <!-- Prominent Name with Glow Effects -->
+        <h1 class="font-heavy text-[10vw] md:text-[7vw] leading-[0.85] uppercase mb-6 tracking-tighter name-glow">
+            <span class="name-glow-outline text-transparent">MARIA</span><br>
+            <span class="text-[#00ffaa] drop-shadow-[0_0_30px_rgba(0,255,170,0.8)]">NAVEED</span>
+        </h1>
+        
+        <p class="max-w-2xl text-gray-400 text-lg md:text-xl font-light mb-8">
+            A Full-Stack Engineer specializing in high-velocity Full Stack applications and autonomous AI architectures.
+        </p>
+        
+        <p class="max-w-3xl text-emerald-400/80 text-sm md:text-base font-medium mb-12">
+            Building digital & AI experiences that blend cutting-edge tech with elegant design.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+            <a href="#projects" class="btn-glow bg-[#00ffaa] text-black px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-widest w-full sm:w-auto">
+                Discover Works
+            </a>
+            <a href="images/CV.pdf" target="_blank" class="bento-card px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-widest w-full sm:w-auto flex items-center justify-center gap-2">
+                Get Resume <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#00ffaa]"></i>
+            </a>
+        </div>
+    </section>
 
-	<div id="fh5co-resume" class="fh5co-bg-color">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="about col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>My Resume</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0">
-					<ul class="timeline">
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Work Experience</h3></div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">MERN stack Developer</h3>
-									<span class="company">Autorobos- Current</span>
-								</div>
-								<div class="timeline-body">
-									<p>What truly drives me is the opportunity to tackle complex challenges and turn them into elegant solutions. Whether it's optimizing performance, implementing new features, or troubleshooting bugs, I thrive in environments where innovation and problem-solving are at the forefront.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">MERN stack Developer</h3>
-									<span class="company">Conation Technologies - 2023</span>
-								</div>
-								<div class="timeline-body">
-									<p>Passionate MERN stack developer with a knack for crafting seamless web experiences. 🚀</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Frontend Developer</h3>
-									<span class="company">Gamica Cloud- 2023</span>
-								</div>
-								<div class="timeline-body">
-									<p>Outside of coding, you can find me exploring the latest tech trends, contributing to open-source projects, or simply enjoying a good cup of coffee while brainstorming my next big idea. Let's connect and create something amazing together!
+    <!-- Skills Section with All Categories -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-24">
+        <div class="text-center mb-16">
+            <h2 class="font-heavy text-5xl md:text-6xl uppercase mb-4">Skillset</h2>
+            <p class="text-gray-400 text-lg">Technologies & tools I work with</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Code / Languages -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-[#00ffaa]/10 flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-6 h-6 text-[#00ffaa]"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">Code</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Code</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">Next</span>
+                    <span class="skill-tag">Nest</span>
+                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">Redux Toolkit</span>
+                    <span class="skill-tag">React Native</span>
+                    <span class="skill-tag">React</span>
+                </div>
+            </div>
 
-									</p>
-								</div>
-							</div>
-						</li>
+            <!-- Databases SQL -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                        <i data-lucide="database" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">SQL DBs</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">SQLite3</span>
+                    <span class="skill-tag">NocoDB</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Supabase</span>
+                    <span class="skill-tag">DynamoDB</span>
+                    <span class="skill-tag">MariaDB</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
 
-						<br>
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Education</h3></div>
-						</li>
-						
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachelors Degree</h3>
-									<span class="company">Virtual University of Pakistan - ongoing</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind textsBeyond the technical aspects, my education instilled in me a problem-solving mindset and a keen eye for detail. Through coursework, projects, and collaborative endeavors, I develop the ability to analyze complex problems, design efficient solutions, and communicate ideas effectively.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Web Developement Course</h3>
-									<span class="company">Gamica Cloud - 2022</span>
-								</div>
-								<div class="timeline-body">
-									<p> Through a combination of lectures, practical exercises, and real-world projects, I developed the skills and confidence to create modern web applications that meet industry standards and user expectations.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Intermediate (FSC)</h3>
-									<span class="company">Cadet College - 2020 - 2022</span>
-								</div>
-								<div class="timeline-body">
-									<p>During my Intermediate studies, I actively developed and refined my communication and problem-solving skills. Through coursework, group projects, and classroom discussions, I learned to effectively articulate ideas and collaborate with peers. Engaging in problem-solving exercises and critical thinking tasks enhanced my ability to analyze issues and devise logical solutions. These foundational skills acquired during my FSC studies continue to serve as valuable assets in both academic pursuits and real-world scenarios.</p>
-								</div>
-							</div>
-						</li>
-			    	</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+            <!-- Databases NoSQL -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                        <i data-lucide="hard-drive" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">NoSQL DBs</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Google Firebase</span>
+                </div>
+            </div>
 
-	<div id="fh5co-features" class="animate-box">
-		<div class="container">
-			<div class="services-padding">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>My Services</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-paintbrush"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Responsiveness</h3>
-								<p>I develop fully responsive Web applications on all screens.</p>
-							</div>
-						</div>
-					</div>
+            <!-- Deployments -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                        <i data-lucide="cloud" class="w-6 h-6 text-orange-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">Deployments</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">Hostinger VPS</span>
+                    <span class="skill-tag">GoDaddy</span>
+                    <span class="skill-tag">DigitalOcean</span>
+                    <span class="skill-tag">Railway</span>
+                </div>
+            </div>
 
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-briefcase"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Frontend Development</h3>
-								<p>I develop unique appealing , use-friendly interfaces using latest frontend frameworks.</p>
-							</div>
-						</div>
+            <!-- CI/CD -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
+                        <i data-lucide="refresh-cw" class="w-6 h-6 text-pink-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">CI/CD</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Dokploy</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">GitLab CI</span>
+                </div>
+            </div>
 
-					</div>
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-search"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Backend Developement</h3>
-								<p>I develop fully user-interactive website using backend technologies like node js and making the sites to fullstack.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+            <!-- DevOps -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+                        <i data-lucide="server" class="w-6 h-6 text-red-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">DevOps</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Dokploy</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Nginx</span>
+                </div>
+            </div>
 
+            <!-- AI + Automation Tools -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
+                        <i data-lucide="bot" class="w-6 h-6 text-cyan-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">AI + Automation</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">n8n</span>
+                    <span class="skill-tag">Make.com</span>
+                    <span class="skill-tag">Zapier</span>
+                    <span class="skill-tag">IFTTT</span>
+                </div>
+            </div>
 
-				<div class="row">
-					<div class="col-md-4 text-center">
+            <!-- Management Tools -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center">
+                        <i data-lucide="clipboard-list" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">Management</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">ClickUp</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Monday.com</span>
+                    <span class="skill-tag">Notion</span>
+                    <span class="skill-tag">Trello</span>
+                    <span class="skill-tag">GitHub Projects</span>
+                </div>
+            </div>
 
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-bargraph"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Developement</h3>
-								<p>I develop any kind of graphical interface web Application from a simple to a 3D website .</p>
-							</div>
-						</div>
+            <!-- CRM -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
+                        <i data-lucide="users" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">CRM</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">GoHighLevel</span>
+                    <span class="skill-tag">Funnels</span>
+                    <span class="skill-tag">Pipelines</span>
+                    <span class="skill-tag">Agency Accounts</span>
+                </div>
+            </div>
 
-					</div>
+            <!-- AI Models -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center">
+                        <i data-lucide="brain" class="w-6 h-6 text-indigo-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">AI Models</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Claude</span>
+                    <span class="skill-tag">OpenAI</span>
+                    <span class="skill-tag">Gemini</span>
+                    <span class="skill-tag">Open Router</span>
+                    <span class="skill-tag">Open Code</span>
+                    <span class="skill-tag">Llama</span>
+                    <span class="skill-tag">Mistral</span>
+                </div>
+            </div>
 
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-genius"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>SEO strategies</h3>
-								<p>I develop my Applications keeping in view the latest SEO strategies for better search of site in browser.</p>
-							</div>
-						</div>
+            <!-- AI Tools -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-emerald-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">AI Tools</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">ChatGPT</span>
+                    <span class="skill-tag">Claude AI</span>
+                    <span class="skill-tag">GitHub Copilot</span>
+                    <span class="skill-tag">Cursor</span>
+                    <span class="skill-tag">Windsurf</span>
+                    <span class="skill-tag">Perplexity</span>
+                </div>
+            </div>
 
-					</div>
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-chat"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Support</h3>
-								<p>I support my clients by comfortably  providing them their desired layouts and meeting deadlines.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <!-- Additional Skills -->
+            <div class="skill-category p-8 rounded-[32px]">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center">
+                        <i data-lucide="layers" class="w-6 h-6 text-amber-400"></i>
+                    </div>
+                    <h3 class="font-heavy text-xl uppercase">More</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">WebSockets</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express</span>
+                    <span class="skill-tag">Many More</span>
+                </div>
+            </div>
 
-	<div id="fh5co-skills" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Skills</h2>
-				</div>
-			</div>
-			<div class="row row-pb-md">
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="95"><span><strong>HTML5</strong>95%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="93"><span><strong>CSS3</strong>93%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="95"><span><strong>Javascript</strong>95%</span></div>
-				</div>
+        </div>
+    </section>
 
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="92"><span><strong>React</strong>92%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="94"><span><strong>MongoDB</strong>94%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="95"><span><strong>NodeJS</strong>95%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="96"><span><str>ExpressJS</str
-					ong>96%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="80"><span><strong>Apollo</strong>80%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="99"><span><strong>TailwindCSS</strong>99%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>Redux</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="80"><span><strong>MUI</strong>80%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="95"><span><strong>Git</strong>95%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="75"><span><strong>GraphQL</strong>75%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="85"><span><strong>NextJS</strong>85%</span></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">HTML5/CSS3</span><span class="value-right">95%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">React</span><span class="value-right">92%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width:92%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">NodeJS</span><span class="value-right">95%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width:95%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Javascript</span><span class="value-right">95%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-4 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width:95%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Git</span><span class="value-right">90%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
-						  </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">MongoDB</span><span class="value-right">94%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width:94%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">ExpressJS</span><span class="value-right">96%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-striped active" role="progressbar"
-						  aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" style="width:96%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">NextJS</span><span class="value-right">85%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Redux</span><span class="value-right">85%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
-						  </div>
-						</div>
-					</div>
-					
-					<div class="progress-wrap">
-						<h3><span class="name-left">GraphQL</span><span class="value-right">75%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-24">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+            <h2 class="font-heavy text-5xl uppercase">Showcase</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="filterProj('all')" class="filter-chip active" id="btn-all">All</button>
+                <button onclick="filterProj('ai')" class="filter-chip" id="btn-ai">AI / Agentic</button>
+                <button onclick="filterProj('web')" class="filter-chip" id="btn-web">Web Apps</button>
+                <button onclick="filterProj('n8n')" class="filter-chip" id="btn-n8n">Automations</button>
+                <button onclick="filterProj('ui')" class="filter-chip" id="btn-ui">UI/UX</button>
+            </div>
+        </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="project-container">
+       
+            
+        <!-- Tapday -->
+            <div class="project-item web ui bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://app.tapday.com/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (52).png" alt="Tapday" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">UI/UX</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Tapday</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Event & booking platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Five Lights Renovation -->
+            <div class="project-item web ui bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://fivelightsreno.com/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (48).png" alt="Five Lights Renovation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">UI/UX</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Five Lights Renovation</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Construction & renovation services</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
-	<div id="fh5co-work" class="fh5co-bg-dark">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Works</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://metabilia.io/" class="work" style="background-image: url(images/Screenshot\ \(47\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Metabilia</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://fivelightsreno.com/" class="work" style="background-image: url(images/Screenshot\ \(48\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Five Lights Renovation</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://www.novoconnection.com/" class="work" style="background-image: url(images/Screenshot\ \(49\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Novo Connection</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://roshgallery.pk/" class="work" style="background-image: url(images/Screenshot\ \(54\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Rosh Gallery</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://github.com/mariaimran65/Autorobos" class="work" style="background-image: url(images/Screenshot\ \(53\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Autorobos</span>
-						</div>
-					</a>
-				</div>
-				
-				
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://github.com/mariaimran65/CRM" class="work" style="background-image: url(images/Screenshot\ \(51\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>CRM</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://app.tapday.com/" class="work" style="background-image: url(images/Screenshot\ \(52\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Tapday</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="https://shoe-paradise.vercel.app/" class="work" style="background-image: url(images/Screenshot\ \(50\).png);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Shoe-Paradise</span>
-						</div>
-					</a>
-				</div>
-				
-			</div>
-		</div>
-	</div>
+             <!-- Opposing Cylinders -->
+            <div class="project-item web bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://opposingcylinders.com/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-zinc-800 flex items-center justify-center">
+                        <!-- <i data-lucide="layers" class="w-16 h-16 text-[#00ffaa]/30 group-hover:scale-125 transition-transform duration-700"></i> -->
+                        <img src="images/OC.png" alt="Opposing Cylinders" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">Web Development</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Opposing Cylinders</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Creative platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+                 <!-- Metabilia -->
+            <div class="project-item web ui bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://metabilia.io/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (47).png" alt="Metabilia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">UI/UX</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Metabilia</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Real estate platform with modern design</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+             <!-- AI Agents Portal -->
+            <div class="project-item ai bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://app.aiagents.co.id/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Busichat.png" alt="AI Agents Portal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">AI Platform</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AI Agents Portal</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">AI automation platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Couve Dev Portal -->
+            <div class="project-item web bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://portal.couvedev.com/auth/login" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-zinc-800 flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-16 h-16 text-[#00ffaa]/30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">Flexspace</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Couve Dev</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Spaces Platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Novo Connection -->
+            <div class="project-item web ui bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://www.novoconnection.com/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (49).png" alt="Novo Connection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">UI/UX</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Novo Connection</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Business networking platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+               <!-- Autorobos -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://github.com/mariaimran65/Autorobos" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (53).png" alt="Autorobos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">Software Solutions Website</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Autorobos</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Automation & AI solutions</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Rosh Gallery -->
+            <div class="project-item web ui bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://roshgallery.pk/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (54).png" alt="Rosh Gallery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">E-Commerce</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Rosh Gallery</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Art gallery & shopping platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+           
+            <!-- HappyTenant -->
+            <div class="project-item web bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://happytenant.io/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-zinc-800 flex items-center justify-center">
+                        <i data-lucide="home" class="w-16 h-16 text-[#00ffaa]/30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">Property Tech</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">HappyTenant</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Property management platform</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- KW.com -->
+            <div class="project-item web bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://kw.com/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-zinc-800 flex items-center justify-center">
+                        <i data-lucide="building-2" class="w-16 h-16 text-[#00ffaa]/30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">Real Estate</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">KW.com</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Keller Williams real estate</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- AMS -->
+            <div class="project-item web bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://ams-sooty-three.vercel.app/index.html" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-zinc-800 flex items-center justify-center">
+                        <i data-lucide="layout-dashboard" class="w-16 h-16 text-[#00ffaa]/30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">Dashboard</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AMS System</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Asset management system</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+          
+         
+            <!-- Shoe Paradise -->
+            <div class="project-item web ui bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://shoe-paradise.vercel.app/" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (50).png" alt="Shoe Paradise" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">UI/UX</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Shoe Paradise</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Online shoe store</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- CRM -->
+            <div class="project-item web bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="https://github.com/mariaimran65/CRM" target="_blank" class="block">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Screenshot (51).png" alt="CRM" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase mb-1">Web Application</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">CRM System</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Customer relationship management</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            
+            <!-- n8n Workflows - Individual Projects -->
+            <!-- Triage + Labeling Emails -->
+            <div class="project-item n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('triage'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Triage + Labeling Emails.png" alt="Triage + Labeling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase mb-1">Email Automation</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Triage + Labeling</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Automated email sorting and labeling</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- SEC EDGAR + News AI Scorer -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('sec'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/SEC EDGAR + News AI Scorer (Fixed).png" alt="SEC EDGAR Scorer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">Financial AI</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">SEC EDGAR Scorer</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">AI-powered news analysis</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- REMAP Lead Enrichment -->
+            <div class="project-item n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('remap'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/REMAP — Daily Lead Enrichment Pipeline.png" alt="REMAP Pipeline" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase mb-1">Lead Enrichment</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">REMAP Pipeline</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Daily automated lead enrichment</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- MultiPlastic Test Report -->
+            <div class="project-item n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('multiplastic'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/1.2 = Send Emails.png" alt="Test Report Issues" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase mb-1">Manufacturing</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Test Report Issues</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Automated test reporting system</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Multiplastic AI Voice Agent -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('voice'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Multiplastic AI Voice Agent.png" alt="AI Voice Agent" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">AI Agent</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AI Voice Agent</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">AI-powered voice automation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Lead Revive v2 -->
+            <div class="project-item n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('leadrevive'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Lead Revive | v2.png" alt="Lead Revive v2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase mb-1">Lead Management</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Lead Revive v2</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Lead re-engagement automation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Hybrid Search with Qdrant -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('qdrant'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Hybrid Search with Qdrant & n8n, Legal AI_ Indexing.png" alt="Hybrid Search" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">Legal AI</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Hybrid Search</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Qdrant + n8n legal document indexing</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Cyclewise Chatbot -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('cyclewise'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Cyclewise - Nicolle Chatbot.png" alt="Cyclewise Chatbot" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">Chatbot</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Cyclewise Chatbot</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">AI customer support chatbot</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Clarity HR Lead Qualification -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('clarity'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Clarity HR – AI Lead Qualification Agent v3.0.png" alt="Clarity HR Agent" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">AI Agent</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Clarity HR Agent</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">AI lead qualification agent</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- BSC ElevenLabs -->
+            <div class="project-item ai n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('bsc'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/BSC — ElevenLabs Transcript → OpenAI Extract → Booking API.png" alt="ElevenLabs + OpenAI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-purple-400 font-black text-[10px] tracking-widest uppercase mb-1">AI Agent</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">ElevenLabs + OpenAI</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Transcript to booking automation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Apollo Lead Enrichment -->
+            <div class="project-item n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('apollo'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/Apollo Lead Enrichment - Update Same Sheet Rows.png" alt="Apollo Enrichment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase mb-1">Data Enrichment</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Apollo Enrichment</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Lead data enrichment automation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Cold Email Marketing -->
+            <div class="project-item n8n bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openWorkflowModal('coldemail'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video">
+                        <img src="images/1.0 = Cold Email Marketing - Private AI.png" alt="Cold Email Marketing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase mb-1">Marketing</span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Cold Email Marketing</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Private AI email campaigns</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-	
-	
-	<div id="fh5co-started" class="fh5co-bg-dark">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Hire Me!</h2>
-					<p>Are you looking for a skilled developer to join your team and contribute to your projects? Look no further! With a passion for coding and a commitment to excellence, I'm ready to bring my expertise to your organization</p>
-					<p><a target="_blank" href="https://wa.me/+923207478953" class="btn btn-default btn-lg">Contact Me</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <footer class="py-32 px-6 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="font-heavy text-[8vw] md:text-[5vw] leading-none uppercase mb-12">Let's Create<br><span class="text-[#00ffaa]">Impact.</span></h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 text-sm font-black tracking-widest uppercase opacity-40">
+                <a href="mailto:mariaimran787898@gmail.com" class="hover:text-white transition">Email</a>
+                <a href="https://www.linkedin.com/in/maria-naveed-15322826b/" class="hover:text-white transition">LinkedIn</a>
+                <a href="https://github.com/mariaimran65" class="hover:text-white transition">Github</a>
+                <!-- <a href="#" class="hover:text-white transition">Upwork</a> -->
+            </div>
+            <p class="mt-20 text-[10px] opacity-20 uppercase font-black tracking-[0.5em]">© 2026 Maria Naveed. Engineered with Precision.</p>
+        </div>
+    </footer>
 
-	
+    <script>
+        lucide.createIcons();
 
-	
-	
-	<div id="fh5co-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<p>&copy; Maria Imran portfolio. </p>
-				</div>
-			</div>
-		</div>
-	</div>
+        function filterProj(category) {
+            const items = document.querySelectorAll('.project-item');
+            const btns = document.querySelectorAll('.filter-chip');
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-	
-	<!-- Main -->
-	<script src="js/main.js"></script>
+            btns.forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + category).classList.add('active');
 
-	</body>
+            items.forEach(item => {
+                item.style.transition = 'all 0.5s ease';
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0) scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px) scale(0.95)';
+                    setTimeout(() => { item.style.display = 'none'; }, 500);
+                }
+            });
+        }
+
+        // Workflow Modal Functions
+        const workflowData = {
+            triage: { title: 'Triage + Labeling Emails', desc: 'Automated email sorting and labeling system that categorizes incoming emails and applies labels based on content analysis.', tags: ['Email', 'Automation', 'AI'], img: 'images/Triage + Labeling Emails.png' },
+            sec: { title: 'SEC EDGAR + News AI Scorer', desc: 'AI-powered financial news analysis system that scores and categorizes SEC EDGAR filings and news articles.', tags: ['Finance', 'AI', 'Data Analysis'], img: 'images/SEC EDGAR + News AI Scorer (Fixed).png' },
+            remap: { title: 'REMAP Lead Enrichment', desc: 'Daily automated lead enrichment pipeline that enriches leads with additional data points and updates CRM records.', tags: ['Lead Gen', 'CRM', 'Automation'], img: 'images/REMAP — Daily Lead Enrichment Pipeline.png' },
+            multiplastic: { title: 'MultiPlastic Test Report Issues', desc: 'Automated test reporting system for manufacturing that tracks and reports quality issues in production.', tags: ['Manufacturing', 'Reporting', 'Automation'], img: 'images/1.2 = Send Emails.png' },
+            voice: { title: 'Multiplastic AI Voice Agent', desc: 'AI-powered voice agent for customer interactions and support automation using advanced speech AI.', tags: ['Voice AI', 'Customer Support', 'AI'], img: 'images/Multiplastic AI Voice Agent.png' },
+            leadrevive: { title: 'Lead Revive v2', desc: 'Automated lead re-engagement system that identifies cold leads and triggers re-engagement campaigns.', tags: ['Lead Management', 'Marketing', 'Automation'], img: 'images/Lead Revive | v2.png' },
+            qdrant: { title: 'Hybrid Search with Qdrant', desc: 'Legal AI document indexing system using Qdrant vector database for semantic search capabilities.', tags: ['Legal AI', 'Search', 'Vector DB'], img: 'images/Hybrid Search with Qdrant & n8n, Legal AI_ Indexing.png' },
+            cyclewise: { title: 'Cyclewise Chatbot', desc: 'AI-powered customer support chatbot for automated assistance and query resolution.', tags: ['Chatbot', 'AI', 'Customer Support'], img: 'images/Cyclewise - Nicolle Chatbot.png' },
+            clarity: { title: 'Clarity HR Lead Qualification Agent', desc: 'AI-driven lead qualification automation that scores and enriches leads for HR recruitment processes.', tags: ['HR', 'AI', 'Lead Qualification'], img: 'images/Clarity HR – AI Lead Qualification Agent v3.0.png' },
+            bsc: { title: 'ElevenLabs + OpenAI Booking', desc: 'Speech-to-text pipeline that converts voice interactions to text, extracts info, and creates bookings automatically.', tags: ['Speech AI', 'Automation', 'Booking'], img: 'images/BSC — ElevenLabs Transcript → OpenAI Extract → Booking API.png' },
+            apollo: { title: 'Apollo Lead Enrichment', desc: 'Automated lead data enrichment using Apollo API to update and enhance CRM lead records.', tags: ['Lead Enrichment', 'Apollo', 'CRM'], img: 'images/Apollo Lead Enrichment - Update Same Sheet Rows.png' },
+            coldemail: { title: 'Cold Email Marketing', desc: 'Private AI-powered cold email marketing automation with personalized campaigns and tracking.', tags: ['Marketing', 'Email', 'AI'], img: 'images/1.0 = Cold Email Marketing - Private AI.png' }
+        };
+
+        function openWorkflowModal(id) {
+            const data = workflowData[id];
+            if (!data) return;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-desc').textContent = data.desc;
+            document.getElementById('modal-image').src = data.img;
+            document.getElementById('modal-image').alt = data.title;
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = data.tags.map(tag => `<span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs font-bold">${tag}</span>`).join('');
+            document.getElementById('workflow-modal').classList.remove('hidden');
+            document.getElementById('workflow-modal').classList.add('flex');
+            // Re-initialize icons for modal
+            lucide.createIcons();
+        }
+
+        function closeWorkflowModal() {
+            document.getElementById('workflow-modal').classList.add('hidden');
+            document.getElementById('workflow-modal').classList.remove('flex');
+        }
+
+        // Close modal when clicking on backdrop
+        document.getElementById('workflow-modal').addEventListener('click', function(e) {
+            if (e.target === document.getElementById('workflow-modal')) {
+                closeWorkflowModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeWorkflowModal();
+            }
+        });
+    </script>
+
+    <!-- Workflow Detail Modal -->
+    <div id="workflow-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bento-card max-w-4xl w-full mx-auto p-4 md:p-8 rounded-[40px] max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
+                <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase">n8n Workflow</span>
+                <button onclick="closeWorkflowModal()" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-zinc-700 transition font-bold text-lg">
+                    ✕
+                </button>
+            </div>
+            <div class="rounded-[24px] overflow-hidden mb-6 bg-zinc-900">
+                <img id="modal-image" src="" alt="Workflow Screenshot" class="w-full h-auto object-contain">
+            </div>
+            <h3 id="modal-title" class="font-heavy text-2xl mb-4"></h3>
+            <p id="modal-desc" class="text-gray-400 mb-6"></p>
+            <div id="modal-tags" class="flex flex-wrap gap-2 mb-4"></div>
+            <p class="text-xs text-orange-400">Review the workflow screenshot above</p>
+        </div>
+    </div>
+</body>
 </html>
-
