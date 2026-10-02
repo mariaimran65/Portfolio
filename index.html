@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARIA NAVEED | Full-Stack Engineer & AI Architect</title>
+    <title>MARIA IMRAN | Full-Stack Engineer & AI Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -37,7 +37,7 @@
             display: inline-block;
         }
         .name-glow::before {
-            content: 'MARIA NAVEED';
+            content: 'MARIA IMRAN';
             position: absolute;
             left: 0;
             top: 0;
@@ -125,6 +125,47 @@
             background: rgba(0,255,170,0.2);
             transform: scale(1.05);
         }
+
+        /* Profile Photo */
+        .avatar-ring {
+            position: relative;
+            padding: 4px;
+            border-radius: 9999px;
+            background: conic-gradient(from 0deg, #00ffaa, rgba(0,255,170,0.05), #00ffaa);
+            animation: spin-ring 8s linear infinite;
+            box-shadow: 0 0 60px rgba(0,255,170,0.25);
+        }
+        .avatar-ring img { animation: spin-ring 8s linear infinite reverse; }
+        @keyframes spin-ring { to { transform: rotate(360deg); } }
+
+        /* Experience Timeline */
+        .timeline-item { position: relative; padding-left: 2.5rem; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.55rem; top: 0.5rem; bottom: -2.5rem;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(0,255,170,0.5), rgba(255,255,255,0.05));
+        }
+        .timeline-item:last-child::before { display: none; }
+        .timeline-dot {
+            position: absolute;
+            left: 0; top: 0.35rem;
+            width: 1.15rem; height: 1.15rem;
+            border-radius: 9999px;
+            border: 2px solid #00ffaa;
+            background: var(--bg);
+            box-shadow: 0 0 12px rgba(0,255,170,0.6);
+        }
+
+        .status-pill {
+            padding: 2px 10px;
+            border-radius: 99px;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
     </style>
 </head>
 <body class="selection:bg-emerald-500 selection:text-black">
@@ -132,17 +173,21 @@
 
     <header class="fixed top-8 left-0 w-full z-50 px-6">
         <div class="max-w-6xl mx-auto bento-card rounded-full px-8 py-4 flex justify-between items-center">
-            <span class="font-heavy text-lg tracking-tighter">MN<span class="text-[#00ffaa]">_</span></span>
+            <span class="font-heavy text-lg tracking-tighter">MI<span class="text-[#00ffaa]">_</span></span>
             <div class="hidden md:flex gap-10 text-[10px] font-black uppercase tracking-widest opacity-60">
                 <a href="#projects" class="hover:text-[#00ffaa] transition">Works</a>
                 <a href="#skills" class="hover:text-[#00ffaa] transition">Stack</a>
+                <a href="#experience" class="hover:text-[#00ffaa] transition">Experience</a>
                 <a href="mailto:mariaimran787898@gmail.com" class="hover:text-[#00ffaa] transition">mariaimran787898@gmail.com</a>
             </div>
             <a href="mailto:mariaimran787898@gmail.com" class="bg-white text-black px-6 py-2 rounded-full text-[10px] font-black uppercase">Contact Me</a>
         </div>
     </header>
 
-    <section class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-20">
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-32">
+        <div class="avatar-ring mb-8">
+            <img src="images/maria.png" alt="Maria Imran" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-[#020202]">
+        </div>
         <div class="mb-6 px-4 py-1 border border-emerald-500/30 rounded-full text-[10px] font-bold text-emerald-400 tracking-[0.3em] uppercase">
             Available for worldwide collab
         </div>
@@ -150,7 +195,7 @@
         <!-- Prominent Name with Glow Effects -->
         <h1 class="font-heavy text-[10vw] md:text-[7vw] leading-[0.85] uppercase mb-6 tracking-tighter name-glow">
             <span class="name-glow-outline text-transparent">MARIA</span><br>
-            <span class="text-[#00ffaa] drop-shadow-[0_0_30px_rgba(0,255,170,0.8)]">NAVEED</span>
+            <span class="text-[#00ffaa] drop-shadow-[0_0_30px_rgba(0,255,170,0.8)]">IMRAN</span>
         </h1>
         
         <p class="max-w-2xl text-gray-400 text-lg md:text-xl font-light mb-8">
@@ -295,6 +340,7 @@
                     <span class="skill-tag">Make.com</span>
                     <span class="skill-tag">Zapier</span>
                     <span class="skill-tag">IFTTT</span>
+                    <span class="skill-tag">GHL Workflows</span>
                 </div>
             </div>
 
@@ -322,13 +368,18 @@
                     <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
                         <i data-lucide="users" class="w-6 h-6 text-green-400"></i>
                     </div>
-                    <h3 class="font-heavy text-xl uppercase">CRM</h3>
+                    <h3 class="font-heavy text-xl uppercase">GoHighLevel</h3>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="skill-tag">GoHighLevel</span>
-                    <span class="skill-tag">Funnels</span>
+                    <span class="skill-tag">GHL Funnels</span>
+                    <span class="skill-tag">GHL Workflows</span>
+                    <span class="skill-tag">Voice AI Agents</span>
+                    <span class="skill-tag">Conversation AI</span>
                     <span class="skill-tag">Pipelines</span>
-                    <span class="skill-tag">Agency Accounts</span>
+                    <span class="skill-tag">Agency &amp; Sub-accounts</span>
+                    <span class="skill-tag">SaaS Mode</span>
+                    <span class="skill-tag">Stripe Checkout</span>
+                    <span class="skill-tag">Microsoft D365</span>
                 </div>
             </div>
 
@@ -391,11 +442,103 @@
         </div>
     </section>
 
+    <!-- Experience -->
+    <section id="experience" class="max-w-4xl mx-auto px-6 py-24">
+        <div class="text-center mb-16">
+            <h2 class="font-heavy text-5xl md:text-6xl uppercase mb-4">Experience</h2>
+            <p class="text-gray-400 text-lg">7+ years building full-stack apps, AI agents &amp; automations</p>
+        </div>
+
+        <div class="space-y-10">
+            <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="bento-card rounded-[32px] p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-heavy text-lg uppercase">Full Stack AI Developer <span class="text-[#00ffaa]">(Team Lead)</span></h3>
+                            <p class="text-sm text-gray-400">REMAP.AI · Brisbane, Australia</p>
+                        </div>
+                        <span class="status-pill bg-[#00ffaa]/10 text-[#00ffaa] border border-[#00ffaa]/30 self-start md:self-auto">Dec 2022 – Present</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 list-disc pl-5 marker:text-[#00ffaa]">
+                        <li>Built 20+ Voice AI Agents and AI Chatbots deployed on client websites and funnels.</li>
+                        <li>Architected GoHighLevel systems across agency &amp; sub-accounts: sales funnels, workflows, pipelines and real-time notification pipelines.</li>
+                        <li>Shipped a fully automated Voice AI SaaS funnel: tier selection, Stripe checkout and automatic agent provisioning with zero manual steps.</li>
+                        <li>Built CRM-integrated AI chatbots that push structured lead data into GHL and create real-time cases in Microsoft D365 FieldBoss.</li>
+                        <li>Built and deployed AI automation agents for workflows, data processing and decision-making (n8n, Make.com, LLMs).</li>
+                        <li>Developed and maintained full-stack web apps; designed SQL &amp; NoSQL databases; built REST &amp; GraphQL APIs; followed CI/CD and DevOps best practices.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="skill-tag">GoHighLevel</span>
+                        <span class="skill-tag">Voice AI</span>
+                        <span class="skill-tag">n8n</span>
+                        <span class="skill-tag">OpenAI</span>
+                        <span class="skill-tag">Stripe</span>
+                        <span class="skill-tag">Next.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="bento-card rounded-[32px] p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-heavy text-lg uppercase">Full Stack Developer</h3>
+                            <p class="text-sm text-gray-400">Xponex · Pakistan</p>
+                        </div>
+                        <span class="status-pill bg-white/5 text-gray-300 border border-white/10 self-start md:self-auto">Jun 2020 – Dec 2022</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 list-disc pl-5 marker:text-[#00ffaa]">
+                        <li>Delivered user-focused products with designers, PMs and developers in agile sprints.</li>
+                        <li>Built server-side logic and RESTful APIs with Node.js &amp; Express, secured with JWT auth.</li>
+                        <li>Implemented custom hooks and reusable components; wrote unit &amp; integration tests and led code reviews.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="bento-card rounded-[32px] p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-heavy text-lg uppercase">MERN Stack Developer</h3>
+                            <p class="text-sm text-gray-400">Autorobos · Faisalabad, Pakistan</p>
+                        </div>
+                        <span class="status-pill bg-white/5 text-gray-300 border border-white/10 self-start md:self-auto">Jul 2019 – Jun 2020</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 list-disc pl-5 marker:text-[#00ffaa]">
+                        <li>Architected scalable MERN applications using microservices and distributed patterns.</li>
+                        <li>Built REST &amp; GraphQL APIs (Apollo Server) with real-time subscriptions and SSE.</li>
+                        <li>Implemented OAuth 2.0 / JWT auth and serverless functions on Google Cloud.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="bento-card rounded-[32px] p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-heavy text-lg uppercase">Intern</h3>
+                            <p class="text-sm text-gray-400">Gamica Cloud · Faisalabad, Pakistan</p>
+                        </div>
+                        <span class="status-pill bg-white/5 text-gray-300 border border-white/10 self-start md:self-auto">Feb 2019 – Jun 2019</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 list-disc pl-5 marker:text-[#00ffaa]">
+                        <li>Developed MERN web apps and GraphQL APIs; took part in code reviews and agile ceremonies.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="projects" class="max-w-6xl mx-auto px-6 py-24">
         <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
             <h2 class="font-heavy text-5xl uppercase">Showcase</h2>
             <div class="flex flex-wrap justify-center gap-3">
                 <button onclick="filterProj('all')" class="filter-chip active" id="btn-all">All</button>
+                <button onclick="filterProj('ghl')" class="filter-chip" id="btn-ghl">GHL / Funnels</button>
                 <button onclick="filterProj('ai')" class="filter-chip" id="btn-ai">AI / Agentic</button>
                 <button onclick="filterProj('web')" class="filter-chip" id="btn-web">Web Apps</button>
                 <button onclick="filterProj('n8n')" class="filter-chip" id="btn-n8n">Automations</button>
@@ -403,6 +546,92 @@
             </div>
         </div>
      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="project-container">
+
+            <!-- GoHighLevel Live Systems -->
+            <div class="project-item ai ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('voicesaas'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="audio-lines" class="w-16 h-16 text-cyan-400 opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-cyan-400 font-black text-[10px] tracking-widest uppercase">SaaS · Voice AI</span><span class="status-pill bg-[#00ffaa]/20 text-[#00ffaa]">Live</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Voice AI SaaS Agent</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Stripe checkout → auto-provisioned voice agent</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item ai ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('crmbot'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="message-square-text" class="w-16 h-16 text-purple-400 opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-purple-400 font-black text-[10px] tracking-widest uppercase">AI Chatbot</span><span class="status-pill bg-amber-400/20 text-amber-300">Staging</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AI CRM Chatbot</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Pushes leads to CRM &amp; creates D365 cases</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item ai ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('funnela'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="git-branch" class="w-16 h-16 text-[#00ffaa] opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase">AI Funnel</span><span class="status-pill bg-[#00ffaa]/20 text-[#00ffaa]">Live</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AI Funnel — Variant A</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Guided journey + GHL automation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item ai ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('funnelb'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="git-merge" class="w-16 h-16 text-[#00ffaa] opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase">AI Funnel</span><span class="status-pill bg-[#00ffaa]/20 text-[#00ffaa]">Live</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AI Funnel — Variant B</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Alternate workflow-driven AI funnel</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item ai ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('aztree'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="trees" class="w-16 h-16 text-green-400 opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-green-400 font-black text-[10px] tracking-widest uppercase">Home Services</span><span class="status-pill bg-[#00ffaa]/20 text-[#00ffaa]">Live</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">AZ Tree AI Agent</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">24/7 lead qualification &amp; routing</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('notify'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="bell-ring" class="w-16 h-16 text-orange-400 opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-orange-400 font-black text-[10px] tracking-widest uppercase">GHL Funnel</span><span class="status-pill bg-[#00ffaa]/20 text-[#00ffaa]">Production</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Notification Funnel</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Instant internal alerts on every submission</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item ghl bento-card p-4 rounded-[40px] group cursor-pointer overflow-hidden">
+                <a href="javascript:void(0)" class="block" onclick="openGhlModal('demos'); return false;">
+                    <div class="relative overflow-hidden rounded-[32px] aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                        <i data-lucide="layout-template" class="w-16 h-16 text-yellow-400 opacity-30 group-hover:scale-125 transition-transform duration-700"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                            <span class="flex items-center gap-2 mb-1"><span class="text-yellow-400 font-black text-[10px] tracking-widest uppercase">GHL Funnels</span><span class="status-pill bg-[#00ffaa]/20 text-[#00ffaa]">Live</span></span>
+                            <h3 class="font-heavy text-xl group-hover:translate-x-2 transition-transform">Funnel Demos</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2">3 builds: offers, designs &amp; flows</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
        
             
         <!-- Tapday -->
@@ -772,6 +1001,10 @@
                 </a>
             </div>
         </div>
+        <p class="mt-12 text-center text-xs text-gray-500">
+            Most GHL funnels run an AI Voice Agent in the bottom-right corner; some run chatbots.
+            Live walkthroughs of the GHL agency &amp; sub-accounts are available on request.
+        </p>
     </section>
 
     <footer class="py-32 px-6 border-t border-white/5 bg-[#050505]">
@@ -783,9 +1016,49 @@
                 <a href="https://github.com/mariaimran65" class="hover:text-white transition">Github</a>
                 <!-- <a href="#" class="hover:text-white transition">Upwork</a> -->
             </div>
-            <p class="mt-20 text-[10px] opacity-20 uppercase font-black tracking-[0.5em]">© 2026 Maria Naveed. Engineered with Precision.</p>
+            <p class="mt-20 text-[10px] opacity-20 uppercase font-black tracking-[0.5em]">© 2026 Maria Imran. Engineered with Precision.</p>
         </div>
     </footer>
+
+
+    <!-- Workflow Detail Modal -->
+    <div id="workflow-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bento-card max-w-4xl w-full mx-auto p-4 md:p-8 rounded-[40px] max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
+                <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase">n8n Workflow</span>
+                <button onclick="closeWorkflowModal()" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-zinc-700 transition font-bold text-lg">
+                    ✕
+                </button>
+            </div>
+            <div class="rounded-[24px] overflow-hidden mb-6 bg-zinc-900">
+                <img id="modal-image" src="" alt="Workflow Screenshot" class="w-full h-auto object-contain">
+            </div>
+            <h3 id="modal-title" class="font-heavy text-2xl mb-4"></h3>
+            <p id="modal-desc" class="text-gray-400 mb-6"></p>
+            <div id="modal-tags" class="flex flex-wrap gap-2 mb-4"></div>
+            <p class="text-xs text-orange-400">Review the workflow screenshot above</p>
+        </div>
+    </div>
+    <!-- GoHighLevel Project Modal -->
+    <div id="ghl-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bento-card max-w-2xl w-full mx-auto p-6 md:p-10 rounded-[40px] max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6 gap-4">
+                <div class="flex flex-wrap items-center gap-3">
+                    <span id="ghl-label" class="text-[#00ffaa] font-black text-[10px] tracking-widest uppercase"></span>
+                    <span id="ghl-status" class="status-pill"></span>
+                </div>
+                <button onclick="closeGhlModal()" class="w-10 h-10 shrink-0 rounded-full bg-zinc-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-zinc-700 transition font-bold text-lg">
+                    ✕
+                </button>
+            </div>
+            <h3 id="ghl-title" class="font-heavy text-2xl mb-4"></h3>
+            <p id="ghl-desc" class="text-gray-400 mb-6"></p>
+            <div id="ghl-tags" class="flex flex-wrap gap-2 mb-8"></div>
+            <div id="ghl-links" class="space-y-3"></div>
+            <p id="ghl-warning" class="hidden mt-6 text-xs text-amber-300 bg-amber-400/10 border border-amber-400/20 rounded-2xl px-4 py-3"></p>
+            <p class="mt-6 text-xs text-gray-500">Live walkthrough available in the GHL agency &amp; sub-accounts on request.</p>
+        </div>
+    </div>
 
     <script>
         lucide.createIcons();
@@ -856,31 +1129,74 @@
             }
         });
 
-        // Close modal on Escape key
+
+        // GoHighLevel Project Modal
+        const ghlData = {
+            voicesaas: { title: 'Voice AI Website Agent — Live Checkout', label: 'SaaS Platform · Voice AI', status: 'Live', tags: ['Stripe', 'SaaS', 'Voice AI', 'GHL'],
+                desc: 'Full SaaS funnel: the prospect selects a tier, pays via Stripe, and an AI voice agent is provisioned on their site — fully automated, zero manual steps.',
+                links: [{ label: 'SaaS Funnel', url: 'https://ai.automation.agency/voice-ai-website-agent' }] },
+            crmbot: { title: 'AI Chatbot with CRM Push', label: 'AI Chatbots · CRM Integrated', status: 'Staging', tags: ['GHL', 'AI Chatbot', 'Microsoft D365', 'FieldBoss'],
+                desc: 'Context-aware AI agent that maps the full conversation and pushes structured lead data directly into the CRM on completion — no manual entry. The agent captures the issue and creates real-time cases in Microsoft D365 FieldBoss. Currently in client testing before going live on their website.',
+                links: [{ label: 'Live Demo', url: 'https://app.automation.agency/v2/preview/EmiO2y1xUWtxjmU9Z2Rf' }] },
+            funnela: { title: 'AI Funnel — Workflow Variant A', label: 'AI Chatbots · CRM Integrated', status: 'Live', tags: ['GHL', 'AI Funnel', 'Workflows'],
+                desc: 'AI-driven funnel guiding prospects through a structured journey and triggering backend automation sequences in GoHighLevel.',
+                links: [{ label: 'Live Demo', url: 'https://app.automation.agency/v2/preview/BnUZY3r9rXWQx27rRwOk' }] },
+            funnelb: { title: 'AI Funnel — Workflow Variant B', label: 'AI Chatbots · CRM Integrated', status: 'Live', tags: ['GHL', 'AI Funnel', 'Workflows'],
+                desc: 'An alternate variant of the AI-driven funnel, with a different journey structure triggering GoHighLevel automation sequences.',
+                links: [{ label: 'Live Demo', url: 'https://app.automation.agency/v2/preview/ZfuImdGMbAAuBi7gh2NI' }] },
+            aztree: { title: 'AZ Tree Trimming — AI Agent', label: 'Industry Deployment · Home Services', status: 'Live', tags: ['Voice AI', 'GHL', 'Lead Routing'],
+                desc: 'End-to-end deployment for a tree services business. The AI handles inbound enquiries, qualifies leads and routes them — operating 24/7 without human intervention.',
+                links: [{ label: 'AI Agent', url: 'https://app.automation.agency/v2/preview/K6Vkwo9ylg7js5dPt5AN' }, { label: 'Website', url: 'https://arizonatreetrimmers.com' }] },
+            notify: { title: 'GHL Sales Funnel — Notification Wired', label: 'GoHighLevel Sales Funnels', status: 'Production', tags: ['GHL', 'Sales Funnel', 'Notifications'],
+                desc: 'Fully operational production funnel with a real-time backend notification pipeline. Every submission fires an instant internal alert to the team.',
+                warning: 'Live production system — please do not submit test data. For visual review only.',
+                links: [{ label: 'Live Funnel', url: 'https://app.automation.agency/v2/preview/i0KAQyYwvB8tjgBxZ5q0' }] },
+            demos: { title: 'Additional Funnel Demos', label: 'GoHighLevel Sales Funnels', status: 'Live', tags: ['GHL', 'Funnels', 'Automation'],
+                desc: 'Three further builds showcasing different offer structures, design patterns and automation flows.',
+                links: [{ label: 'Demo 1', url: 'https://app.automation.agency/v2/preview/Dnst5LrmatBNcKedgbbD' }, { label: 'Demo 2', url: 'https://app.automation.agency/v2/preview/A2ahNZ4Wsz4VEEvs9Ryl' }, { label: 'Demo 3', url: 'https://app.automation.agency/v2/preview/P8mWY4NoNTCmwFWMJ08v' }] }
+        };
+
+        function openGhlModal(id) {
+            const data = ghlData[id];
+            if (!data) return;
+            document.getElementById('ghl-label').textContent = data.label;
+            document.getElementById('ghl-title').textContent = data.title;
+            document.getElementById('ghl-desc').textContent = data.desc;
+            const status = document.getElementById('ghl-status');
+            status.textContent = data.status;
+            status.className = 'status-pill ' + (data.status === 'Staging' ? 'bg-amber-400/20 text-amber-300' : 'bg-[#00ffaa]/20 text-[#00ffaa]');
+            document.getElementById('ghl-tags').innerHTML = data.tags.map(tag => `<span class="skill-tag">${tag}</span>`).join('');
+            const warning = document.getElementById('ghl-warning');
+            warning.textContent = data.warning ? '⚠  ' + data.warning : '';
+            warning.classList.toggle('hidden', !data.warning);
+            document.getElementById('ghl-links').innerHTML = data.links.map(l => `
+                <a href="${l.url}" target="_blank" rel="noopener" class="bento-card flex items-center justify-between gap-4 px-5 py-4 rounded-2xl">
+                    <span class="font-black text-xs uppercase tracking-widest">${l.label}</span>
+                    <span class="flex items-center gap-2 text-xs text-gray-400 truncate">${l.url.replace('https://', '')}<i data-lucide="arrow-up-right" class="w-4 h-4 text-[#00ffaa] shrink-0"></i></span>
+                </a>`).join('');
+            document.getElementById('ghl-modal').classList.remove('hidden');
+            document.getElementById('ghl-modal').classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeGhlModal() {
+            document.getElementById('ghl-modal').classList.add('hidden');
+            document.getElementById('ghl-modal').classList.remove('flex');
+        }
+
+        document.getElementById('ghl-modal').addEventListener('click', function(e) {
+            if (e.target === document.getElementById('ghl-modal')) {
+                closeGhlModal();
+            }
+        });
+
+        // Close modals on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeWorkflowModal();
+                closeGhlModal();
             }
         });
     </script>
-
-    <!-- Workflow Detail Modal -->
-    <div id="workflow-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="bento-card max-w-4xl w-full mx-auto p-4 md:p-8 rounded-[40px] max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-start mb-6">
-                <span class="text-orange-400 font-black text-[10px] tracking-widest uppercase">n8n Workflow</span>
-                <button onclick="closeWorkflowModal()" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-zinc-700 transition font-bold text-lg">
-                    ✕
-                </button>
-            </div>
-            <div class="rounded-[24px] overflow-hidden mb-6 bg-zinc-900">
-                <img id="modal-image" src="" alt="Workflow Screenshot" class="w-full h-auto object-contain">
-            </div>
-            <h3 id="modal-title" class="font-heavy text-2xl mb-4"></h3>
-            <p id="modal-desc" class="text-gray-400 mb-6"></p>
-            <div id="modal-tags" class="flex flex-wrap gap-2 mb-4"></div>
-            <p class="text-xs text-orange-400">Review the workflow screenshot above</p>
-        </div>
-    </div>
 </body>
 </html>
